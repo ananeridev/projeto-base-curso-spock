@@ -87,6 +87,15 @@
 			<version>2.2</version>
 		</dependency>
 		<!-- JPA/Hibernate -->
+		
+		<!-- Banco de dados H2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.195</version>
+		</dependency>
+		<!-- Banco de dados H2 -->
+
 	</dependencies>
 	
 </project>
