@@ -24,7 +24,7 @@ public class Boletim {
             return "Nota 2 inválida: "+this.nota2;
         }
 
-        boolean aprovadoMedia = this.getMedia() >= 6;
+        boolean aprovadoMedia = this.getMedia() >= 5;
         boolean aprovadoFrequencia = this.frequencia >= 75;
 
         if (!aprovadoMedia && !aprovadoFrequencia) {
