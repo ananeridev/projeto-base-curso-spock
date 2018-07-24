@@ -11,7 +11,20 @@ public class Boletim {
     }
 
     public String getResultado() {
-        boolean aprovadoMedia = this.getMedia() >= 5;
+
+        if (this.frequencia<0 || this.frequencia>100) {
+            return "Valor de frequência inválido ("+this.frequencia+")";
+        }
+
+        if (this.nota1<0 || this.nota1>10) {
+            return "Nota 1 inválida: "+this.nota1;
+        }
+
+        if (this.nota2<0 || this.nota2>10) {
+            return "Nota 2 inválida: "+this.nota2;
+        }
+
+        boolean aprovadoMedia = this.getMedia() >= 6;
         boolean aprovadoFrequencia = this.frequencia >= 75;
 
         if (!aprovadoMedia && !aprovadoFrequencia) {
