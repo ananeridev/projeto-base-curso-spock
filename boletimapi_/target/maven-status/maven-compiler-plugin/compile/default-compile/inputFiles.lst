@@ -1,7 +1,0 @@
-/home/jose/Documents/eclipse-workspaces/bandtec/curso-spock/boletimapi/src/main/java/br/com/bandtec/boletimapi/BoletimApiApplication.java
-/home/jose/Documents/eclipse-workspaces/bandtec/curso-spock/boletimapi/src/main/java/br/com/bandtec/boletimapi/entity/Boletim.java
-/home/jose/Documents/eclipse-workspaces/bandtec/curso-spock/boletimapi/src/main/java/br/com/bandtec/boletimapi/controllers/BoletimController.java
-/home/jose/Documents/eclipse-workspaces/bandtec/curso-spock/boletimapi/src/main/java/br/com/bandtec/boletimapi/enums/Resultado.java
-/home/jose/Documents/eclipse-workspaces/bandtec/curso-spock/boletimapi/src/main/java/br/com/bandtec/boletimapi/interceptors/AutenticacaoInterceptor.java
-/home/jose/Documents/eclipse-workspaces/bandtec/curso-spock/boletimapi/src/main/java/br/com/bandtec/boletimapi/repository/BoletimRepository.java
-/home/jose/Documents/eclipse-workspaces/bandtec/curso-spock/boletimapi/src/main/java/br/com/bandtec/boletimapi/controllers/BoletimRuimController.java
