@@ -13,19 +13,23 @@ public class Boletim {
         return (nota1 + nota2) / 2;
     }
 
-    public String getResultado() {
-
+    private void validarFrequencia() {
         if (this.frequencia<0 || this.frequencia>100) {
             throw new FrequenciaInvalidaException();
         }
+    }
 
-        if (this.nota1<0 || this.nota1>10) {
-            throw new NotaInvalidaException(this.nota1);
+    private void validarNota(double nota) {
+        if (nota<0 || nota>10) {
+            throw new NotaInvalidaException(nota);
         }
+    }
 
-        if (this.nota2<0 || this.nota2>10) {
-            throw new NotaInvalidaException(this.nota2);
-        }
+    public String getResultado() {
+
+        this.validarFrequencia();
+        this.validarNota(this.nota1);
+        this.validarNota(this.nota2);
 
         boolean aprovadoMedia = this.getMedia() >= 5;
         boolean aprovadoFrequencia = this.frequencia >= 75;

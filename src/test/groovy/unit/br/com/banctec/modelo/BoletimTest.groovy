@@ -95,4 +95,54 @@ class BoletimTest extends Specification {
     }
 
 
+    def 'deveria validar a frequência'() {
+        given:
+        Boletim bvalido = new Boletim(frequencia: 50)
+        Boletim binvalido = new Boletim(frequencia: -0.01)
+        Boletim binvalido2 = new Boletim(frequencia: 100.01)
+
+        when:
+        bvalido.validarFrequencia()
+
+        then:
+        true
+
+        when:
+        binvalido.validarFrequencia()
+
+        then:
+        thrown(FrequenciaInvalidaException)
+
+        when:
+        binvalido2.validarFrequencia()
+
+        then:
+        thrown(FrequenciaInvalidaException)
+    }
+
+
+    def 'deveria validar as notas'() {
+        given:
+        Boletim boletim = new Boletim()
+
+        when:
+        boletim.validarNota(5)
+
+        then:
+        true
+
+        when:
+        boletim.validarNota(-0.01)
+
+        then:
+        thrown(NotaInvalidaException)
+
+        when:
+        boletim.validarNota(10.01)
+
+        then:
+        thrown(NotaInvalidaException)
+
+    }
+
 }
