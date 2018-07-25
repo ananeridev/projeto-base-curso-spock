@@ -3,8 +3,6 @@ package unit.br.com.banctec.modelo
 import br.com.bandtec.excecoes.FrequenciaInvalidaException
 import br.com.bandtec.excecoes.NotaInvalidaException
 import br.com.bandtec.modelo.Boletim
-import spock.lang.Issue
-import spock.lang.See
 import spock.lang.Specification
 
 class BoletimTest extends Specification {
