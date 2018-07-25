@@ -1,5 +1,7 @@
 package unit.br.com.banctec.modelo
 
+import br.com.bandtec.excecoes.FrequenciaInvalidaException
+import br.com.bandtec.excecoes.NotaInvalidaException
 import br.com.bandtec.modelo.Boletim
 import spock.lang.Specification
 
@@ -35,27 +37,75 @@ class BoletimTest extends Specification {
 
     }
 
-    def 'não deveria aceitar frequência >100 nem <0'() {
+    def 'deveria lançar uma exceção p/ frequência inválida'() {
         given:
-        Boletim b1 = new Boletim(nota1: 10, nota2: 10, frequencia: -1)
-        Boletim b2 = new Boletim(nota1: 10, nota2: 10, frequencia: 101)
+        Boletim boletim = new Boletim(frequencia: -0.01)
 
         when:
-        def res1 = b1.getResultado()
-        def res2 = b2.getResultado()
+        boletim.getResultado()
 
+        // verificando se uma determinada exceção ocorreu
+        // durante a execução do teste
         then:
-        res1 == "Valor de frequência inválido (${b1.frequencia})"
-        res2 == "Valor de frequência inválido (${b2.frequencia})"
+        thrown(FrequenciaInvalidaException)
     }
 
-    // alterar a classe Boletim para que, caso a nota1 ou nota2
-    // sejam menores que 0 ou maiores que 10,
-    // o resultado seja sempre "Nota X inválida: Y".
-    // Onde X é 1 ou 2 e Y é o valor da nota inválida
-    // exs: "Nota 1 inválida: 999"
-    //      "Nota 2 inválida: -722"
+    def 'deveria lançar uma exceção p/ nota inválida'() {
+        given:
+        Boletim bnota1menor = new Boletim(nota1: -0.01)
+        Boletim bnota1maior = new Boletim(nota1: 10.01)
+        Boletim bnota2menor = new Boletim(nota2: -0.01)
+        Boletim bnota2maior = new Boletim(nota2: 10.01)
 
-    // criem um cenário de teste que valide essa nova regra
+        when:
+        bnota1menor.getResultado()
+
+        then:
+        thrown(NotaInvalidaException)
+
+
+        when:
+        bnota1maior.getResultado()
+
+        then:
+        thrown(NotaInvalidaException)
+
+
+        when:
+        bnota2menor.getResultado()
+
+        then:
+        thrown(NotaInvalidaException)
+
+
+        when:
+        bnota2maior.getResultado()
+
+        then:
+        thrown(NotaInvalidaException)
+    }
+
+    def 'deveria trazer a mensagem de erro p/ nota'() {
+        given:
+        Boletim bnota1 = new Boletim(nota1: 10.01)
+        Boletim bnota2 = new Boletim(nota2: -0.01)
+
+        when:
+        bnota1.getResultado()
+
+        then:
+        def erro = thrown(NotaInvalidaException)
+        erro.getMessage() == "Nota deve estar entre 0 e 10. Chegou ${bnota1.nota1}"
+
+
+        when:
+        bnota2.getResultado()
+
+        then:
+        erro = thrown(NotaInvalidaException)
+        erro.getMessage() == "Nota deve estar entre 0 e 10. Chegou ${bnota2.nota2}"
+
+    }
+
 
 }
