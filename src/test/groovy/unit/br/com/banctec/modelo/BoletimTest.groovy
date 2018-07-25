@@ -3,37 +3,26 @@ package unit.br.com.banctec.modelo
 import br.com.bandtec.excecoes.FrequenciaInvalidaException
 import br.com.bandtec.excecoes.NotaInvalidaException
 import br.com.bandtec.modelo.Boletim
+import spock.lang.Issue
+import spock.lang.See
 import spock.lang.Specification
 
 class BoletimTest extends Specification {
 
-    def 'deveria ser aprovado'() {
-        given:
-        Boletim boletim = new Boletim(nota1: 5, nota2: 7, frequencia: 75)
+    def 'deveria ter o resultado correto p/ valores válidos'() {
+        setup:
+        def boletim = new Boletim(nota1: n1, nota2: n2, frequencia: freq)
 
-        when:
-        def resultado = boletim.getResultado()
+        expect:
+        boletim.getResultado() == resultado
 
-        then:
-        resultado == 'Aprovado'
-    }
-
-    def 'deveria ser reprovado por nota'() {
-        given:
-        Boletim boletim = new Boletim(nota1: 4.99, nota2: 4.99, frequencia: 75)
-
-        when:
-        def res = boletim.getResultado()
-
-        then:
-        res == 'Reprovado por nota'
-    }
-
-    def 'deveria ser reprovado por frequência'() {
-
-    }
-
-    def 'deveria ser reprovado geral'() {
+        // Data Driven test
+        where:
+        n1   | n2   | freq  | resultado
+        5    | 5    | 75    | 'Aprovado'
+        5    | 5    | 74    | 'Reprovado por frequência'
+        3	 | 3	| 75	| 'Reprovado por nota'
+        2	 | 2	| 50	| 'Reprovado geral'
 
     }
 
