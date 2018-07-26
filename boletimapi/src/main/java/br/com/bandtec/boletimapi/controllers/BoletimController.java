@@ -31,14 +31,24 @@ public class BoletimController {
 
     @GetMapping("/{id}")
     public ResponseEntity getUm(@PathVariable("id") Long id, @RequestHeader("token") String token) {
-        return ResponseEntity.ok(repository.findByIdAndToken(id, token));
+        Boletim boletim = repository.findByIdAndToken(id, token);
+        if (boletim != null) {
+            return ResponseEntity.ok(boletim);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
     public ResponseEntity criar(@RequestBody Boletim boletim, @RequestHeader("token") String token) {
         boletim.setToken(token);
-        repository.save(boletim);
-        return ResponseEntity.ok().build();
+        try {
+            repository.save(boletim);
+            return ResponseEntity.status(201).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(e.getCause().getMessage());
+        }
+
     }
 
     @DeleteMapping("/{id}")
