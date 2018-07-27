@@ -22,10 +22,18 @@ public class BoletimController {
     public ResponseEntity getVarios(
             @RequestParam(value = "aluno", required = false) String aluno,
             @RequestHeader("token") String token) {
+        List<Boletim> lista;
         if (aluno == null) {
-            return ResponseEntity.ok(repository.findByTokenOrderByAluno(token));
+            lista = repository.findByTokenOrderByAluno(token);
+
         } else {
-            return ResponseEntity.ok(repository.findByAlunoLikeAndTokenOrderByAluno(aluno, token));
+            lista = repository.findByAlunoLikeAndTokenOrderByAluno(aluno, token);
+        }
+
+        if (lista!=null) {
+            return ResponseEntity.ok(lista);
+        } else {
+            return ResponseEntity.noContent().build();
         }
     }
 
