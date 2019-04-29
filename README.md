@@ -3,4 +3,4 @@ Projeto base para o curso de testes automatizados com Spock.
 
 PPT com os conceitos do curso: **http://tiny.cc/byzw5y**
 
-Versão 04/2018.
+Versão 04/2019.
