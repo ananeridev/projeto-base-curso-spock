@@ -1,6 +1,6 @@
 # Projeto base - curso Spock framework
 Projeto base para o curso de testes automatizados com Spock.
 
-PPT com os conceitos do curso: **http://bit.do/ppt-curso-spock-2018-2**
+PPT com os conceitos do curso: **http://tiny.cc/byzw5y**
 
-Versão 07/2018.
+Versão 04/2018.
