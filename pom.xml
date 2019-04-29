@@ -30,20 +30,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
 
 		</plugins>
 	</build>
@@ -53,49 +39,9 @@
 		<dependency>
 			<groupId>org.spockframework</groupId>
 			<artifactId>spock-core</artifactId>
-			<version>RELEASE</version>
+			<version>1.2-groovy-2.4</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- para o uso de mocks -->
-		<dependency>
-			<groupId>net.bytebuddy</groupId>
-			<artifactId>byte-buddy</artifactId>
-			<version>1.6.5</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.objenesis</groupId>
-			<artifactId>objenesis</artifactId>
-			<version>2.5.1</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- para o uso de mocks -->
-
-		<!-- para os testes de API REST -->
-		<dependency>
-			<groupId>org.codehaus.groovy.modules.http-builder</groupId>
-			<artifactId>http-builder</artifactId>
-			<version>0.7.1</version>
-		</dependency>
-		<!-- para os testes de API REST -->
-
-		<!-- JPA/Hibernate -->
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version>
-		</dependency>
-		<!-- JPA/Hibernate -->
-		
-		<!-- Banco de dados H2 -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.195</version>
-		</dependency>
-		<!-- Banco de dados H2 -->
-
 	</dependencies>
 	
 </project>
